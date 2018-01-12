@@ -30,20 +30,24 @@ def non_local_callables(func):
     call_list = []
     for name in func.__code__.co_names:
         try:
-            eval(name)
+            eval(name, func.__globals__)
         except NameError:
             continue
 
-        if callable(eval(name)):
+        if callable(eval(name, func.__globals__)):
             call_list.append(name)
     return call_list
+
+def _name_is_function(name, globals):
+    '''If name is a function in global scope'''
+    return eval(name, globals).__class__.__name__ not in\
+                ['function', 'builtin_function_or_method']
 
 def non_local_callable_class_objects(func):
     '''Returns list with names of objects that are callable, but not functions.
     '''
     func_names = non_local_callables(func)
-    return [name for name in func_names
-            if eval(name).__class__.__name__ not in ['function', 'builtin_function_or_method']]
+    return [name for name in func_names if _name_is_function(name, func.__globals__)]
 
 def non_local_non_callable_variables(func):
     '''Returns list with names of variables that are not callable from
