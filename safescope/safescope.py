@@ -39,7 +39,7 @@ def non_local_callables(func):
     return call_list
 
 def _name_is_function(name, globals):
-    '''If name is a function in global scope'''
+    '''If name is a function in global scope.'''
     return eval(name, globals).__class__.__name__ not in\
                 ['function', 'builtin_function_or_method']
 
@@ -49,6 +49,10 @@ def non_local_callable_class_objects(func):
     func_names = non_local_callables(func)
     return [name for name in func_names if _name_is_function(name, func.__globals__)]
 
+def _name_is_module(name, globals):
+    '''If name is a package in global scope.'''
+    return eval(name, globals).__class__.__name__ == 'module'
+
 def non_local_non_callable_variables(func):
     '''Returns list with names of variables that are not callable from
     enclosing scopes.
@@ -57,5 +61,7 @@ def non_local_non_callable_variables(func):
     non_callables = set(func.__code__.co_names) - set(func_names)
 
     source = inspect.getsource(func)
-    return [name for name in non_callables
-            if len(re.findall(r'[^\.]' + name + r'[^a-zA-z0-9_]', source)) > 0]
+    non_callables = [name for name in non_callables
+                     if len(re.findall(r'[^\.]' + name + r'[^a-zA-z0-9_]', source)) > 0]
+
+    return [name for name in non_callables if not _name_is_module(name, func.__globals__)]
