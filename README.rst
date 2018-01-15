@@ -24,6 +24,13 @@ Python package for preventing use of variables from enclosing scope.
 * Free software: BSD license
 * Documentation: https://safescope.readthedocs.io.
 
+Install
+--------
+
+::
+
+    pip install safescope
+
 
 Features
 --------
@@ -38,11 +45,14 @@ Quickstart:
 
     from safescope import assert_local_vars
 
+    a = 0
+
     @assert_local_vars
     def foo():
         b = 5
         return a + b
 
+This should raise an error explaining that a is not in the function scope.
 
 Credits
 ---------
