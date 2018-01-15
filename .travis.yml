@@ -21,7 +21,7 @@ deploy:
     python: 2.7
     repo: havakv/safescope
     tags: true
-install: pip install -U tox-travis
+install: pip install -U pytest # install: pip install -U tox-travis
 language: python
 python:
 - 3.5
@@ -29,4 +29,4 @@ python:
 - 3.3
 - 2.7
 - 2.6
-script: tox
+script: py.test # script: tox
