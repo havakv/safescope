@@ -38,16 +38,16 @@ def non_local_callables(func):
             call_list.append(name)
     return call_list
 
-def _name_is_function(name, globals):
+def _name_is_func_or_class(name, globals):
     '''If name is a function in global scope.'''
-    return eval(name, globals).__class__.__name__ not in\
-                ['function', 'builtin_function_or_method']
+    return eval(name, globals).__class__.__name__ in\
+                ['function', 'builtin_function_or_method', 'type']
 
 def non_local_callable_class_objects(func):
     '''Returns list with names of objects that are callable, but not functions.
     '''
     func_names = non_local_callables(func)
-    return [name for name in func_names if _name_is_function(name, func.__globals__)]
+    return [name for name in func_names if not  _name_is_func_or_class(name, func.__globals__)]
 
 def _name_is_module(name, globals):
     '''If name is a package in global scope.'''
