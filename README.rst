@@ -36,8 +36,8 @@ Arguably, use of this package incurrage bad programming habits...
 Quickstart:
 ::
 
-    from safescope import assert_local_v
-    a 
+    from safescope import assert_local_vars
+
     @assert_local_vars
     def foo():
         b = 5
