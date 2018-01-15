@@ -34,14 +34,15 @@ The functionality is only meant for use in notebooks, and not real code.
 Arguably, use of this package incurrage bad programming habits...
 
 Quickstart:
+::
 
-.. code-block:: python
-   from safescope import assert_local_v
-   a 
-   @assert_local_vars
-   def foo():
-       b = 5
-       return a + b
+    from safescope import assert_local_v
+    a 
+    @assert_local_vars
+    def foo():
+        b = 5
+        return a + b
+
 
 Credits
 ---------
