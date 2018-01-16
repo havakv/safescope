@@ -12,8 +12,8 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    're',
-    'inspect',
+    # 're',
+    # 'inspect',
 ]
 
 setup_requirements = [
@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='safescope',
-    version='0.1.1',
+    version='0.1.2',
     description="Python package for preventing use of variables from enclosing scope.",
     long_description=readme + '\n\n' + history,
     author="Haavard Kvamme",
