@@ -38,7 +38,7 @@ Features
 This is a package that can be used for preventing functions from using global variables,
 or variables from enclosing scopes.
 The functionality is only meant for use in notebooks, and not real code.
-Arguably, use of this package incurrage bad programming habits...
+Arguably, use of this package encourage bad programming habits...
 
 Quickstart:
 ::

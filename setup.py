@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='safescope',
-    version='0.1.3',
+    version='0.1.4',
     description="Python package for preventing use of variables from enclosing scope.",
     long_description=readme + '\n\n' + history,
     author="Haavard Kvamme",
