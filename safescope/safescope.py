@@ -66,7 +66,11 @@ def non_local_non_callable_variables(func):
     # non_callables = set(func.__code__.co_names) - set(func_names)
 
     source = inspect.getsource(func)
+    source = re.sub(r'^.*\n', '', source) # remove first line
+    source = re.sub(r'^def .*\n', '', source) # remove def line (if it was not first)
     non_callables = [name for name in non_callables
                      if len(re.findall(r'[^\.]' + name + r'[^a-zA-z0-9_]', source)) > 0]
 
+    if func.__code__.co_name in non_callables:
+        non_callables.remove(func.__code__.co_name) # To handle recursion
     return [name for name in non_callables if not _name_is_module(name, func.__globals__)]
