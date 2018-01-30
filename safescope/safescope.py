@@ -43,7 +43,7 @@ def non_local_callables(func):
 def _name_is_func_or_class(name, globals):
     '''If name is a function in global scope.'''
     return eval(name, globals).__class__.__name__ in\
-                ['function', 'builtin_function_or_method', 'type']
+                ['function', 'builtin_function_or_method', 'type', 'CPUDispatcher']
 
 def non_local_callable_class_objects(func):
     '''Returns list with names of objects that are callable, but not functions.
