@@ -28,7 +28,9 @@ def non_local_callables(func):
     from the enclosing scopes.
     '''
     call_list = []
-    for name in func.__code__.co_names:
+    candidates = set(func.__code__.co_names) - set(func.__code__.co_varnames)
+    # for name in func.__code__.co_names:
+    for name in candidates:
         try:
             eval(name, func.__globals__)
         except NameError:
@@ -58,7 +60,10 @@ def non_local_non_callable_variables(func):
     enclosing scopes.
     '''
     func_names = non_local_callables(func)
-    non_callables = set(func.__code__.co_names) - set(func_names)
+    non_callables = set(func.__code__.co_names) -\
+                    set(func.__code__.co_varnames) -\
+                    set(func_names)
+    # non_callables = set(func.__code__.co_names) - set(func_names)
 
     source = inspect.getsource(func)
     non_callables = [name for name in non_callables

@@ -40,6 +40,12 @@ def func_with_object():
     c = obj.bar()
     return glob_b + c
 
+class ClassWithVar(object):
+    def __init__(self, a):
+        self.a = a
+        self.glob_b = glob_b
+
+
 class TestGetNonLocalVarNames(object):
     def test_func_with_glob(self):
         res = safescope.get_non_local_var_names(func_with_glob)
@@ -57,6 +63,10 @@ class TestGetNonLocalVarNames(object):
         res = safescope.get_non_local_var_names(func_with_module)
         assert res == ['glob_b']
 
-    def test_func_with_ojbect(self):
+    def test_func_with_object(self):
         res = safescope.get_non_local_var_names(func_with_object)
         assert sorted(res) == ['glob_b', 'obj']
+
+    def test_class_with_var(self):
+        res = safescope.get_non_local_var_names(ClassWithVar.__init__)
+        assert res == ['glob_b']
