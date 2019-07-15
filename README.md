@@ -1,6 +1,6 @@
 # safescope
 [![Build Status](https://travis-ci.org/havakv/safescope.svg?branch=master)](https://travis-ci.org/havakv/safescope)
-![PyPI](https://img.shields.io/pypi/v/safescope.svg)
+[![PyPI](https://img.shields.io/pypi/v/safescope.svg)](https://pypi.org/project/safescope/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/safescope.svg)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://github.com/havakv/safescope/blob/master/LICENSE)
 
