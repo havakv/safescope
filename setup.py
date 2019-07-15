@@ -5,11 +5,11 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
+# with open('HISTORY.rst') as history_file:
+#     history = history_file.read()
 
 requirements = [
     # 're',
@@ -29,8 +29,9 @@ test_requirements = [
 setup(
     name='safescope',
     version='0.1.8',
-    description="Python package for preventing use of variables from enclosing scope.",
-    long_description=readme + '\n\n' + history,
+    description="Python package for preventing use of variables from global scope.",
+    # long_description=readme + '\n\n' + history,
+    long_description=readme,
     author="Haavard Kvamme",
     author_email='haavard.kvamme@gmail.com',
     url='https://github.com/havakv/safescope',
@@ -45,15 +46,12 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
     tests_require=test_requirements,
     setup_requires=setup_requirements,
+    python_requires='>=3.5',
 )
