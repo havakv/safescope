@@ -24,9 +24,10 @@ deploy:
 install: pip install -U pytest # install: pip install -U tox-travis
 language: python
 python:
-- 3.5
-- 3.4
-- 3.3
-- 2.7
-- 2.6
+- 3.7
+# - 3.5
+# - 3.4
+# - 3.3
+# - 2.7
+# - 2.6
 script: py.test # script: tox

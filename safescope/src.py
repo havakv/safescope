@@ -76,6 +76,14 @@ def _add_to_side_scope(name: str, value: Any) -> None:
     """
     side_scope.__dict__[name] = value
 
+def _delete_from_side_scope(name: str) -> None:
+    """Delete `name` from side_scope.
+    
+    Arguments:
+        name {str} -- Name of variable/function/import, etc.
+    """
+    side_scope.__dict__.pop(name)
 
 _add_to_side_scope('add', _add_to_side_scope)
+_add_to_side_scope('delete', _delete_from_side_scope)
 
