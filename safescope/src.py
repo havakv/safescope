@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import annotations
 import inspect
-from typing import Callable, Any, Type, Optional
-from types import ModuleType, TracebackType
 from safescope import side_scope
 
 
@@ -22,17 +19,15 @@ class Imports:
     
     """
     namespace = side_scope
-    def capture(self, name:str , value: ModuleType) -> None:
+    def capture(self, name , value):
         self.namespace.__dict__[name] = value
 
-    def __enter__(self) -> Imports:
+    def __enter__(self):
         caller_frame = inspect.currentframe().f_back
         self.local_names = set(caller_frame.f_locals)
         return self
 
-    def __exit__(self, exc_type: Optional[Type[BaseException]],
-                 exc_val: Optional[BaseException],
-                 exc_tb: Optional[TracebackType]) -> bool:
+    def __exit__(self, exc_type, exc_val, exc_tb):
         caller_frame = inspect.currentframe().f_back
         changes = 0
         for name in caller_frame.f_locals:
@@ -45,7 +40,7 @@ class Imports:
         return False
 
 
-def safescope(func: Callable) -> Callable:
+def safescope(func):
     """Decorator for declaring function in `side_scope` in stead of global scope.
     This prevents the use of global variables.
 
@@ -62,7 +57,7 @@ def safescope(func: Callable) -> Callable:
     side_scope.add(func.__name__, func)
     return func
 
-def _add_to_side_scope(name: str, value: Any) -> None:
+def _add_to_side_scope(name, value):
     """Add `value` to side_scope with name `name`.
     
     Arguments:
@@ -76,7 +71,7 @@ def _add_to_side_scope(name: str, value: Any) -> None:
     """
     side_scope.__dict__[name] = value
 
-def _delete_from_side_scope(name: str) -> None:
+def _delete_from_side_scope(name):
     """Delete `name` from side_scope.
     
     Arguments:

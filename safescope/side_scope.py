@@ -1,6 +1,6 @@
 """This is a file for creating an extra scope"""
 
-def __def_function__() -> None:
+def __def_function__():
     """To get __globals__ for this scope."""
     pass
 

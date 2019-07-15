@@ -51,5 +51,5 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     setup_requires=setup_requirements,
-    python_requires='>=3.7',
+    # python_requires='>=3.7',
 )
