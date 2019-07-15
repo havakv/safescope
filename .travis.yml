@@ -23,7 +23,7 @@ deploy:
     tags: true
 install:
   - pip install -U pytest # install: pip install -U tox-travis
-  - python setup.py install
+  # - python setup.py install
 language: python
 python:
 - 3.7
