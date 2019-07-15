@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 import inspect
-from typing import Callable
+from typing import Callable, Any
 from types import ModuleType
-from safescope import _side_scope
+from safescope import side_scope
 
 
 class _LocalsCapture:
@@ -20,7 +20,7 @@ class _LocalsCapture:
                 self.capture(name, caller_frame.f_locals[name])
 
 class imports(_LocalsCapture):
-    namespace = _side_scope
+    namespace = side_scope
     def capture(self, name:str , value: ModuleType):
         self.namespace.__dict__[name] = value
 
@@ -35,6 +35,25 @@ def safescope(func: Callable) -> Callable:
     Returns:
         [type] -- [description]
     """
-    func = type(func)(func.__code__, _side_scope.__globals__, func.__name__,
+    func = type(func)(func.__code__, side_scope.__globals__, func.__name__,
                       func.__defaults__, func.__closure__)
+    side_scope.add(func.__name__, func)
     return func
+
+def _add_to_side_scope(name: str, value: Any):
+    """Add `value` to side_scope with name `name`.
+    
+    Arguments:
+        name {str} -- Name of variable/function/import, etc.
+        value {Any} -- Function/variable/import, etc.
+    
+    Example:
+        import numpy
+        side_scope.add('np', numpy)
+        side_scope.np.arange(5)
+    """
+    side_scope.__dict__[name] = value
+
+
+_add_to_side_scope('add', _add_to_side_scope)
+
