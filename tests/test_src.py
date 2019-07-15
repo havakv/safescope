@@ -62,13 +62,13 @@ def test_safescope_name_error() -> None:
     assert foo() == 5, 'Something wrong with setup of test'
 
     @safescope
-    def foo() -> int:
+    def foo2() -> int:
         return x
 
     with pytest.raises(NameError) as e:
-        foo()
+        foo2()
     assert str(e.value) == "name 'x' is not defined"
-    delete('foo')
+    delete('foo2')
 
 @safescope
 def ss_returns_4() -> int:
