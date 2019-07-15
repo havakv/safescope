@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='safescope',
-    version='0.2.0',
+    version='0.2.1',
     description="Python package for preventing use of variables from global scope.",
     # long_description=readme + '\n\n' + history,
     long_description=readme,
