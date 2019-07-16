@@ -32,6 +32,7 @@ setup(
     description="Python package for preventing use of variables from global scope.",
     # long_description=readme + '\n\n' + history,
     long_description=readme,
+    long_description_content_type='text/markdown',
     author="Haavard Kvamme",
     author_email='haavard.kvamme@gmail.com',
     url='https://github.com/havakv/safescope',
