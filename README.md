@@ -47,11 +47,11 @@ arange(4) # Returns array([0, 1, 2, 3])
 
 Next, **safescope** can be installed from pypi:
 ```bash
-pip3 install -U safescope
+pip install safescope
 ```
 or from github with pip:
 ```bash
-pip3 install git+git://github.com/havakv/safescope.git
+pip install git+git://github.com/havakv/safescope.git
 ```
 or by cloning the repo:
 ```bash
