@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/havakv/safescope.svg?branch=master)](https://travis-ci.org/havakv/safescope)
 [![PyPI](https://img.shields.io/pypi/v/safescope.svg)](https://pypi.org/project/safescope/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/safescope.svg)
+[![Downloads](https://pepy.tech/badge/safescope)](https://pepy.tech/project/safescope)
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://github.com/havakv/safescope/blob/master/LICENSE)
 
 **safescope** is a small python package useful for development in jupyter notebooks.
